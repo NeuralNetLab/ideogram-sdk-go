@@ -153,12 +153,12 @@ const (
 type EditApplyParams struct {
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	ImageFile io.Reader `json:"image_file,required" format:"binary"`
+	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	// A black and white image of the same size as the image being edited (max size
 	// 10MB). Black regions in the mask should match up with the regions of the image
 	// that you would like to edit; only JPEG, WebP and PNG formats are supported at
 	// this time.
-	Mask io.Reader `json:"mask,required" format:"binary"`
+	Mask io.Reader `json:"mask,omitzero,required" format:"binary"`
 	// The model used to generate an image or edit one. /generate and /remix supports
 	// all model types, however, /edit is only supported for V_2 and V_2_TURBO.
 	//

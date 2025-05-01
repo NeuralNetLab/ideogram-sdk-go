@@ -135,7 +135,7 @@ const (
 type ReframeNewParams struct {
 	// The image being reframed (max size 10MB); only JPEG, WebP and PNG formats are
 	// supported at this time.
-	ImageFile io.Reader `json:"image_file,required" format:"binary"`
+	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	// The model used to generate an image or edit one. /generate and /remix supports
 	// all model types, however, /edit is only supported for V_2 and V_2_TURBO.
 	//

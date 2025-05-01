@@ -93,12 +93,12 @@ type InternalTestingNewParams struct {
 	XTestHeader2          param.Opt[string]    `header:"X-Test-Header-2,omitzero" json:"-"`
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	AnotherImageFile io.Reader `json:"another_image_file" format:"binary"`
+	AnotherImageFile io.Reader `json:"another_image_file,omitzero" format:"binary"`
 	// Any of "EIN", "ZWEI", "DREI".
 	EnumTypeField InternalTestingNewParamsEnumTypeField `json:"enum_type_field,omitzero"`
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	ImageFile                  io.Reader                                          `json:"image_file" format:"binary"`
+	ImageFile                  io.Reader                                          `json:"image_file,omitzero" format:"binary"`
 	NestedObject               NestedObjectParam                                  `json:"nested_object,omitzero"`
 	NestedObjectRequiredFields InternalTestingNewParamsNestedObjectRequiredFields `json:"nested_object_required_fields,omitzero"`
 	RepeatedComplexField       []NestedObjectParam                                `json:"repeated_complex_field,omitzero"`
