@@ -53,7 +53,7 @@ func (r *RemixService) New(ctx context.Context, body RemixNewParams, opts ...opt
 type RemixNewParams struct {
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	ImageFile io.Reader `json:"image_file,required" format:"binary"`
+	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	// A request to generate a new image using a provided image and a prompt.
 	ImageRequest RemixNewParamsImageRequest `json:"image_request,omitzero,required"`
 	paramObj

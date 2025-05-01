@@ -86,7 +86,7 @@ func (r *DescribeNewResponseDescription) UnmarshalJSON(data []byte) error {
 type DescribeNewParams struct {
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	ImageFile io.Reader `json:"image_file,required" format:"binary"`
+	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	paramObj
 }
 

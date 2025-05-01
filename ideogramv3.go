@@ -392,12 +392,12 @@ const (
 type IdeogramV3EditParams struct {
 	// The image being edited (max size 10MB); only JPEG, WebP and PNG formats are
 	// supported at this time.
-	Image io.Reader `json:"image,required" format:"binary"`
+	Image io.Reader `json:"image,omitzero,required" format:"binary"`
 	// A black and white image of the same size as the image being edited (max size
 	// 10MB). Black regions in the mask should match up with the regions of the image
 	// that you would like to edit; only JPEG, WebP and PNG formats are supported at
 	// this time.
-	Mask io.Reader `json:"mask,required" format:"binary"`
+	Mask io.Reader `json:"mask,omitzero,required" format:"binary"`
 	// The prompt used to describe the edited result.
 	Prompt string `json:"prompt,required"`
 	// The number of images to generate.
@@ -522,7 +522,7 @@ func (r IdeogramV3GenerateParams) MarshalMultipart() (data []byte, contentType s
 type IdeogramV3ReframeParams struct {
 	// The image being reframed (max size 10MB); only JPEG, WebP and PNG formats are
 	// supported at this time.
-	Image io.Reader `json:"image,required" format:"binary"`
+	Image io.Reader `json:"image,omitzero,required" format:"binary"`
 	// The resolutions supported for model version V_3.
 	//
 	// Any of "512x1536", "576x1408", "576x1472", "576x1536", "640x1344", "640x1408",
@@ -581,7 +581,7 @@ func (r IdeogramV3ReframeParams) MarshalMultipart() (data []byte, contentType st
 type IdeogramV3RemixParams struct {
 	// The image to remix binary (max size 10MB); only JPEG, WebP and PNG formats are
 	// supported at this time.
-	Image io.Reader `json:"image,required" format:"binary"`
+	Image io.Reader `json:"image,omitzero,required" format:"binary"`
 	// The prompt to use to generate the image.
 	Prompt      string           `json:"prompt,required"`
 	ImageWeight param.Opt[int64] `json:"image_weight,omitzero"`

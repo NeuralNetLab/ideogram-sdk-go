@@ -50,7 +50,7 @@ func (r *UpscaleService) New(ctx context.Context, body UpscaleNewParams, opts ..
 type UpscaleNewParams struct {
 	// An image binary (max size 10MB); only JPEG, WebP and PNG formats are supported
 	// at this time.
-	ImageFile io.Reader `json:"image_file,required" format:"binary"`
+	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	// A request to upscale a provided image with the help of an optional prompt.
 	ImageRequest UpscaleNewParamsImageRequest `json:"image_request,omitzero,required"`
 	paramObj
