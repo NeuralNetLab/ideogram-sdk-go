@@ -13,7 +13,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // DescribeService contains methods and other services that help with interacting
@@ -49,10 +49,10 @@ func (r *DescribeService) New(ctx context.Context, body DescribeNewParams, opts 
 type DescribeNewResponse struct {
 	// A collection of descriptions for given content.
 	Descriptions []DescribeNewResponseDescription `json:"descriptions"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Descriptions resp.Field
-		ExtraFields  map[string]resp.Field
+		Descriptions respjson.Field
+		ExtraFields  map[string]respjson.Field
 		raw          string
 	} `json:"-"`
 }
@@ -66,10 +66,10 @@ func (r *DescribeNewResponse) UnmarshalJSON(data []byte) error {
 type DescribeNewResponseDescription struct {
 	// The generated description for the provided image.
 	Text string `json:"text"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Text        resp.Field
-		ExtraFields map[string]resp.Field
+		Text        respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }
