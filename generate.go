@@ -117,9 +117,6 @@ type ImageRequestParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ImageRequestParam) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 func (r ImageRequestParam) MarshalJSON() (data []byte, err error) {
 	type shadow ImageRequestParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -159,10 +156,6 @@ type GenerateNewParams struct {
 	StyleRefEmbeddings []string `json:"style_ref_embeddings,omitzero"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f GenerateNewParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r GenerateNewParams) MarshalJSON() (data []byte, err error) {
 	type shadow GenerateNewParams

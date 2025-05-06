@@ -13,7 +13,6 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
 )
 
@@ -50,8 +49,7 @@ func (r *DescribeService) New(ctx context.Context, body DescribeNewParams, opts 
 type DescribeNewResponse struct {
 	// A collection of descriptions for given content.
 	Descriptions []DescribeNewResponseDescription `json:"descriptions"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Descriptions resp.Field
 		ExtraFields  map[string]resp.Field
@@ -68,8 +66,7 @@ func (r *DescribeNewResponse) UnmarshalJSON(data []byte) error {
 type DescribeNewResponseDescription struct {
 	// The generated description for the provided image.
 	Text string `json:"text"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Text        resp.Field
 		ExtraFields map[string]resp.Field
@@ -89,10 +86,6 @@ type DescribeNewParams struct {
 	ImageFile io.Reader `json:"image_file,omitzero,required" format:"binary"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f DescribeNewParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r DescribeNewParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)

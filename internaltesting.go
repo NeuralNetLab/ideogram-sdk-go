@@ -58,9 +58,6 @@ type NestedObjectParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f NestedObjectParam) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 func (r NestedObjectParam) MarshalJSON() (data []byte, err error) {
 	type shadow NestedObjectParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -68,8 +65,7 @@ func (r NestedObjectParam) MarshalJSON() (data []byte, err error) {
 
 type InternalTestingNewResponse struct {
 	ResponseContent string `json:"response_content"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		ResponseContent resp.Field
 		ExtraFields     map[string]resp.Field
@@ -106,10 +102,6 @@ type InternalTestingNewParams struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f InternalTestingNewParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
-
 func (r InternalTestingNewParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
@@ -140,11 +132,6 @@ type InternalTestingNewParamsNestedObjectRequiredFields struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f InternalTestingNewParamsNestedObjectRequiredFields) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
-}
 func (r InternalTestingNewParamsNestedObjectRequiredFields) MarshalJSON() (data []byte, err error) {
 	type shadow InternalTestingNewParamsNestedObjectRequiredFields
 	return param.MarshalObject(r, (*shadow)(&r))
