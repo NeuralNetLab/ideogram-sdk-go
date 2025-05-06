@@ -12,7 +12,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // ManageAPIService contains methods and other services that help with interacting
@@ -71,11 +71,11 @@ type Price struct {
 	Amount float64 `json:"amount,required"`
 	// The ISO 4217 currency code for the price object.
 	CurrencyCode string `json:"currency_code,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Amount       resp.Field
-		CurrencyCode resp.Field
-		ExtraFields  map[string]resp.Field
+		Amount       respjson.Field
+		CurrencyCode respjson.Field
+		ExtraFields  map[string]respjson.Field
 		raw          string
 	} `json:"-"`
 }
@@ -116,10 +116,10 @@ func (r PriceParam) MarshalJSON() (data []byte, err error) {
 type RechargeSettingsResponse struct {
 	// Whether or not the recharge setting is currently active.
 	IsActive bool `json:"is_active,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		IsActive    resp.Field
-		ExtraFields map[string]resp.Field
+		IsActive    respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 	RechargeSettingsSubscription
@@ -134,10 +134,10 @@ func (r *RechargeSettingsResponse) UnmarshalJSON(data []byte) error {
 type ManageAPIAddCreditsResponse struct {
 	// Represents a price.
 	Amount Price `json:"amount,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Amount      resp.Field
-		ExtraFields map[string]resp.Field
+		Amount      respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }
@@ -152,10 +152,10 @@ func (r *ManageAPIAddCreditsResponse) UnmarshalJSON(data []byte) error {
 type ManageAPIReactivateResponse struct {
 	// The current recharge settings for the API subscription.
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		RechargeSettings resp.Field
-		ExtraFields      map[string]resp.Field
+		RechargeSettings respjson.Field
+		ExtraFields      map[string]respjson.Field
 		raw              string
 	} `json:"-"`
 }
@@ -174,11 +174,11 @@ type ManageAPIGetStripeSubscriptionResponse struct {
 	StripeBillingURL string `json:"stripe_billing_url"`
 	// The URL for the user to checkout the Stripe subscription plan.
 	StripeSubscriptionURL string `json:"stripe_subscription_url"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		StripeBillingURL      resp.Field
-		StripeSubscriptionURL resp.Field
-		ExtraFields           map[string]resp.Field
+		StripeBillingURL      respjson.Field
+		StripeSubscriptionURL respjson.Field
+		ExtraFields           map[string]respjson.Field
 		raw                   string
 	} `json:"-"`
 }

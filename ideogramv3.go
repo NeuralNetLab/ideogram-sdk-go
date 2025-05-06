@@ -15,7 +15,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // IdeogramV3Service contains methods and other services that help with interacting
@@ -211,11 +211,11 @@ type ImageGenerationResponse struct {
 	Created time.Time `json:"created,required" format:"date-time"`
 	// A list of ImageObjects that contain the generated image(s).
 	Data []ImageGenerationResponseData `json:"data,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		Created     resp.Field
-		Data        resp.Field
-		ExtraFields map[string]resp.Field
+		Created     respjson.Field
+		Data        respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }
@@ -256,15 +256,15 @@ type ImageGenerationResponseData struct {
 	StyleType StyleTypeV3 `json:"style_type"`
 	// The direct link to the image generated.
 	URL string `json:"url,nullable" format:"uri"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		IsImageSafe resp.Field
-		Prompt      resp.Field
-		Resolution  resp.Field
-		Seed        resp.Field
-		StyleType   resp.Field
-		URL         resp.Field
-		ExtraFields map[string]resp.Field
+		IsImageSafe respjson.Field
+		Prompt      respjson.Field
+		Resolution  respjson.Field
+		Seed        respjson.Field
+		StyleType   respjson.Field
+		URL         respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }

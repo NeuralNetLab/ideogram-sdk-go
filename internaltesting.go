@@ -16,7 +16,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // InternalTestingService contains methods and other services that help with
@@ -65,10 +65,10 @@ func (r NestedObjectParam) MarshalJSON() (data []byte, err error) {
 
 type InternalTestingNewResponse struct {
 	ResponseContent string `json:"response_content"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		ResponseContent resp.Field
-		ExtraFields     map[string]resp.Field
+		ResponseContent respjson.Field
+		ExtraFields     map[string]respjson.Field
 		raw             string
 	} `json:"-"`
 }

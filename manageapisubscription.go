@@ -10,7 +10,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // ManageAPISubscriptionService contains methods and other services that help with
@@ -54,11 +54,11 @@ type RechargeSettingsSubscription struct {
 	MinimumBalanceThreshold Price `json:"minimum_balance_threshold,required"`
 	// Represents a price.
 	TopUpBalance Price `json:"top_up_balance,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		MinimumBalanceThreshold resp.Field
-		TopUpBalance            resp.Field
-		ExtraFields             map[string]resp.Field
+		MinimumBalanceThreshold respjson.Field
+		TopUpBalance            respjson.Field
+		ExtraFields             map[string]respjson.Field
 		raw                     string
 	} `json:"-"`
 }
@@ -113,16 +113,16 @@ type ManageAPISubscriptionGetResponse struct {
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
 	// The URL for the user to manage the existing Stripe subscription plan.
 	StripeBillingURL string `json:"stripe_billing_url"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		HasAcceptedTerms              resp.Field
-		HasStripeSetup                resp.Field
-		MetronomeDashboardDarkModeURL resp.Field
-		MetronomeDashboardURL         resp.Field
-		MetronomeLinks                resp.Field
-		RechargeSettings              resp.Field
-		StripeBillingURL              resp.Field
-		ExtraFields                   map[string]resp.Field
+		HasAcceptedTerms              respjson.Field
+		HasStripeSetup                respjson.Field
+		MetronomeDashboardDarkModeURL respjson.Field
+		MetronomeDashboardURL         respjson.Field
+		MetronomeLinks                respjson.Field
+		RechargeSettings              respjson.Field
+		StripeBillingURL              respjson.Field
+		ExtraFields                   map[string]respjson.Field
 		raw                           string
 	} `json:"-"`
 }
@@ -142,13 +142,13 @@ type ManageAPISubscriptionGetResponseMetronomeLinks struct {
 	InvoicesIframeDarkModeURL string `json:"invoices_iframe_dark_mode_url"`
 	// The URL to display the customer invoice and API usage.
 	InvoicesIframeURL string `json:"invoices_iframe_url"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		CreditsIframeDarkModeURL  resp.Field
-		CreditsIframeURL          resp.Field
-		InvoicesIframeDarkModeURL resp.Field
-		InvoicesIframeURL         resp.Field
-		ExtraFields               map[string]resp.Field
+		CreditsIframeDarkModeURL  respjson.Field
+		CreditsIframeURL          respjson.Field
+		InvoicesIframeDarkModeURL respjson.Field
+		InvoicesIframeURL         respjson.Field
+		ExtraFields               map[string]respjson.Field
 		raw                       string
 	} `json:"-"`
 }
@@ -163,10 +163,10 @@ func (r *ManageAPISubscriptionGetResponseMetronomeLinks) UnmarshalJSON(data []by
 type ManageAPISubscriptionUpdateResponse struct {
 	// The current recharge settings for the API subscription.
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		RechargeSettings resp.Field
-		ExtraFields      map[string]resp.Field
+		RechargeSettings respjson.Field
+		ExtraFields      map[string]respjson.Field
 		raw              string
 	} `json:"-"`
 }

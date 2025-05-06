@@ -10,7 +10,7 @@ import (
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/resp"
+	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
 )
 
 // ManageAPITermService contains methods and other services that help with
@@ -51,10 +51,10 @@ func (r *ManageAPITermService) Accept(ctx context.Context, body ManageAPITermAcc
 
 type ManageAPITermGetResponse struct {
 	APITerms ManageAPITermGetResponseAPITerms `json:"api_terms,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		APITerms    resp.Field
-		ExtraFields map[string]resp.Field
+		APITerms    respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }
@@ -70,11 +70,11 @@ type ManageAPITermGetResponseAPITerms struct {
 	TermsID string `json:"terms_id,required"`
 	// The URL where the terms are hosted.
 	TermsURL string `json:"terms_url,required"`
-	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
+	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
-		TermsID     resp.Field
-		TermsURL    resp.Field
-		ExtraFields map[string]resp.Field
+		TermsID     respjson.Field
+		TermsURL    respjson.Field
+		ExtraFields map[string]respjson.Field
 		raw         string
 	} `json:"-"`
 }
