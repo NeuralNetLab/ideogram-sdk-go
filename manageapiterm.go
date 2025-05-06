@@ -51,8 +51,7 @@ func (r *ManageAPITermService) Accept(ctx context.Context, body ManageAPITermAcc
 
 type ManageAPITermGetResponse struct {
 	APITerms ManageAPITermGetResponseAPITerms `json:"api_terms,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		APITerms    resp.Field
 		ExtraFields map[string]resp.Field
@@ -71,8 +70,7 @@ type ManageAPITermGetResponseAPITerms struct {
 	TermsID string `json:"terms_id,required"`
 	// The URL where the terms are hosted.
 	TermsURL string `json:"terms_url,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		TermsID     resp.Field
 		TermsURL    resp.Field
@@ -92,10 +90,6 @@ type ManageAPITermAcceptParams struct {
 	TermsID string `json:"terms_id,required"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ManageAPITermAcceptParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r ManageAPITermAcceptParams) MarshalJSON() (data []byte, err error) {
 	type shadow ManageAPITermAcceptParams

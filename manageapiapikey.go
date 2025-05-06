@@ -69,8 +69,7 @@ type ManageApiapiKeyNewResponse struct {
 	APIKey string `json:"api_key,required"`
 	// The ID of the API key. A URL safe base64 encoded UUID
 	APIKeyID string `json:"api_key_id,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		APIKey      resp.Field
 		APIKeyID    resp.Field
@@ -88,8 +87,7 @@ func (r *ManageApiapiKeyNewResponse) UnmarshalJSON(data []byte) error {
 type ManageApiapiKeyGetResponse struct {
 	// The current API keys that are active. Only returns redacted keys.
 	CurrentAPIKeys []ManageApiapiKeyGetResponseCurrentAPIKey `json:"current_api_keys"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		CurrentAPIKeys resp.Field
 		ExtraFields    map[string]resp.Field
@@ -112,8 +110,7 @@ type ManageApiapiKeyGetResponseCurrentAPIKey struct {
 	// A redacted text snippet of the API key. Contains the first 4 characters of the
 	// API key
 	RedactedAPIKey string `json:"redacted_api_key,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		APIKeyID       resp.Field
 		CreationTime   resp.Field

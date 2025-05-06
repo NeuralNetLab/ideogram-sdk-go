@@ -60,8 +60,7 @@ type GenerateImage struct {
 	Created time.Time `json:"created,required" format:"date-time"`
 	// A list of ImageObjects that contain the generated image(s).
 	Data []GenerateImageData `json:"data,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Created     resp.Field
 		Data        resp.Field
@@ -94,8 +93,7 @@ type GenerateImageData struct {
 	StyleType StyleTypeV2AndAbove `json:"style_type"`
 	// The direct link to the image generated.
 	URL string `json:"url,nullable" format:"uri"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		IsImageSafe resp.Field
 		Prompt      resp.Field
@@ -181,10 +179,6 @@ type EditApplyParams struct {
 	StyleType StyleTypeV2AndAbove `json:"style_type,omitzero"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f EditApplyParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r EditApplyParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)

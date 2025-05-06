@@ -135,9 +135,6 @@ type ColorPaletteUnionParam struct {
 	paramUnion
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (u ColorPaletteUnionParam) IsPresent() bool { return !param.IsOmitted(u) && !u.IsNull() }
 func (u ColorPaletteUnionParam) MarshalJSON() ([]byte, error) {
 	return param.MarshalUnion[ColorPaletteUnionParam](u.OfColorPaletteWithPresetName, u.OfColorPaletteWithMembers)
 }
@@ -161,11 +158,6 @@ type ColorPaletteColorPaletteWithPresetNameParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ColorPaletteColorPaletteWithPresetNameParam) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
-}
 func (r ColorPaletteColorPaletteWithPresetNameParam) MarshalJSON() (data []byte, err error) {
 	type shadow ColorPaletteColorPaletteWithPresetNameParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -190,11 +182,6 @@ type ColorPaletteColorPaletteWithMembersParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ColorPaletteColorPaletteWithMembersParam) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
-}
 func (r ColorPaletteColorPaletteWithMembersParam) MarshalJSON() (data []byte, err error) {
 	type shadow ColorPaletteColorPaletteWithMembersParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -211,11 +198,6 @@ type ColorPaletteColorPaletteWithMembersMemberParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ColorPaletteColorPaletteWithMembersMemberParam) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
-}
 func (r ColorPaletteColorPaletteWithMembersMemberParam) MarshalJSON() (data []byte, err error) {
 	type shadow ColorPaletteColorPaletteWithMembersMemberParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -229,8 +211,7 @@ type ImageGenerationResponse struct {
 	Created time.Time `json:"created,required" format:"date-time"`
 	// A list of ImageObjects that contain the generated image(s).
 	Data []ImageGenerationResponseData `json:"data,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Created     resp.Field
 		Data        resp.Field
@@ -275,8 +256,7 @@ type ImageGenerationResponseData struct {
 	StyleType StyleTypeV3 `json:"style_type"`
 	// The direct link to the image generated.
 	URL string `json:"url,nullable" format:"uri"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		IsImageSafe resp.Field
 		Prompt      resp.Field
@@ -425,10 +405,6 @@ type IdeogramV3EditParams struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f IdeogramV3EditParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
-
 func (r IdeogramV3EditParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
@@ -500,10 +476,6 @@ type IdeogramV3GenerateParams struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f IdeogramV3GenerateParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
-
 func (r IdeogramV3GenerateParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
@@ -558,10 +530,6 @@ type IdeogramV3ReframeParams struct {
 	StyleReferenceImages []io.Reader `json:"style_reference_images,omitzero" format:"binary"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f IdeogramV3ReframeParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r IdeogramV3ReframeParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
@@ -637,10 +605,6 @@ type IdeogramV3RemixParams struct {
 	StyleType StyleTypeV3 `json:"style_type,omitzero"`
 	paramObj
 }
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f IdeogramV3RemixParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 
 func (r IdeogramV3RemixParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)

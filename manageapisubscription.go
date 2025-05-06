@@ -54,8 +54,7 @@ type RechargeSettingsSubscription struct {
 	MinimumBalanceThreshold Price `json:"minimum_balance_threshold,required"`
 	// Represents a price.
 	TopUpBalance Price `json:"top_up_balance,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		MinimumBalanceThreshold resp.Field
 		TopUpBalance            resp.Field
@@ -75,9 +74,9 @@ func (r *RechargeSettingsSubscription) UnmarshalJSON(data []byte) error {
 //
 // Warning: the fields of the param type will not be present. ToParam should only
 // be used at the last possible moment before sending a request. Test for this with
-// RechargeSettingsSubscriptionParam.IsOverridden()
+// RechargeSettingsSubscriptionParam.Overrides()
 func (r RechargeSettingsSubscription) ToParam() RechargeSettingsSubscriptionParam {
-	return param.OverrideObj[RechargeSettingsSubscriptionParam](r.RawJSON())
+	return param.Override[RechargeSettingsSubscriptionParam](r.RawJSON())
 }
 
 // The current recharge settings for the API subscription.
@@ -91,11 +90,6 @@ type RechargeSettingsSubscriptionParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f RechargeSettingsSubscriptionParam) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
-}
 func (r RechargeSettingsSubscriptionParam) MarshalJSON() (data []byte, err error) {
 	type shadow RechargeSettingsSubscriptionParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -119,8 +113,7 @@ type ManageAPISubscriptionGetResponse struct {
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
 	// The URL for the user to manage the existing Stripe subscription plan.
 	StripeBillingURL string `json:"stripe_billing_url"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		HasAcceptedTerms              resp.Field
 		HasStripeSetup                resp.Field
@@ -149,8 +142,7 @@ type ManageAPISubscriptionGetResponseMetronomeLinks struct {
 	InvoicesIframeDarkModeURL string `json:"invoices_iframe_dark_mode_url"`
 	// The URL to display the customer invoice and API usage.
 	InvoicesIframeURL string `json:"invoices_iframe_url"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		CreditsIframeDarkModeURL  resp.Field
 		CreditsIframeURL          resp.Field
@@ -171,8 +163,7 @@ func (r *ManageAPISubscriptionGetResponseMetronomeLinks) UnmarshalJSON(data []by
 type ManageAPISubscriptionUpdateResponse struct {
 	// The current recharge settings for the API subscription.
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		RechargeSettings resp.Field
 		ExtraFields      map[string]resp.Field
@@ -190,12 +181,6 @@ type ManageAPISubscriptionUpdateParams struct {
 	// The current recharge settings for the API subscription.
 	RechargeSettings RechargeSettingsSubscriptionParam `json:"recharge_settings,omitzero"`
 	paramObj
-}
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ManageAPISubscriptionUpdateParams) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
 }
 
 func (r ManageAPISubscriptionUpdateParams) MarshalJSON() (data []byte, err error) {

@@ -71,8 +71,7 @@ type Price struct {
 	Amount float64 `json:"amount,required"`
 	// The ISO 4217 currency code for the price object.
 	CurrencyCode string `json:"currency_code,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Amount       resp.Field
 		CurrencyCode resp.Field
@@ -91,9 +90,9 @@ func (r *Price) UnmarshalJSON(data []byte) error {
 //
 // Warning: the fields of the param type will not be present. ToParam should only
 // be used at the last possible moment before sending a request. Test for this with
-// PriceParam.IsOverridden()
+// PriceParam.Overrides()
 func (r Price) ToParam() PriceParam {
-	return param.OverrideObj[PriceParam](r.RawJSON())
+	return param.Override[PriceParam](r.RawJSON())
 }
 
 // Represents a price.
@@ -108,9 +107,6 @@ type PriceParam struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f PriceParam) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 func (r PriceParam) MarshalJSON() (data []byte, err error) {
 	type shadow PriceParam
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -120,8 +116,7 @@ func (r PriceParam) MarshalJSON() (data []byte, err error) {
 type RechargeSettingsResponse struct {
 	// Whether or not the recharge setting is currently active.
 	IsActive bool `json:"is_active,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		IsActive    resp.Field
 		ExtraFields map[string]resp.Field
@@ -139,8 +134,7 @@ func (r *RechargeSettingsResponse) UnmarshalJSON(data []byte) error {
 type ManageAPIAddCreditsResponse struct {
 	// Represents a price.
 	Amount Price `json:"amount,required"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		Amount      resp.Field
 		ExtraFields map[string]resp.Field
@@ -158,8 +152,7 @@ func (r *ManageAPIAddCreditsResponse) UnmarshalJSON(data []byte) error {
 type ManageAPIReactivateResponse struct {
 	// The current recharge settings for the API subscription.
 	RechargeSettings RechargeSettingsResponse `json:"recharge_settings"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		RechargeSettings resp.Field
 		ExtraFields      map[string]resp.Field
@@ -181,8 +174,7 @@ type ManageAPIGetStripeSubscriptionResponse struct {
 	StripeBillingURL string `json:"stripe_billing_url"`
 	// The URL for the user to checkout the Stripe subscription plan.
 	StripeSubscriptionURL string `json:"stripe_subscription_url"`
-	// Metadata for the response, check the presence of optional fields with the
-	// [resp.Field.IsPresent] method.
+	// JSON contains metadata for fields, check presence with [resp.Field.Valid].
 	JSON struct {
 		StripeBillingURL      resp.Field
 		StripeSubscriptionURL resp.Field
@@ -203,10 +195,6 @@ type ManageAPIAddCreditsParams struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ManageAPIAddCreditsParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
-
 func (r ManageAPIAddCreditsParams) MarshalJSON() (data []byte, err error) {
 	type shadow ManageAPIAddCreditsParams
 	return param.MarshalObject(r, (*shadow)(&r))
@@ -216,12 +204,6 @@ type ManageAPIGetStripeSubscriptionParams struct {
 	// Whether the subscription is intended to be used for business or personal use.
 	IsBusiness param.Opt[bool] `query:"isBusiness,omitzero" json:"-"`
 	paramObj
-}
-
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f ManageAPIGetStripeSubscriptionParams) IsPresent() bool {
-	return !param.IsOmitted(f) && !f.IsNull()
 }
 
 // URLQuery serializes [ManageAPIGetStripeSubscriptionParams]'s query parameters as

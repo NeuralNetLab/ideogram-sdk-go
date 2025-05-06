@@ -56,10 +56,6 @@ type UpscaleNewParams struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f UpscaleNewParams) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
-
 func (r UpscaleNewParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
@@ -96,9 +92,6 @@ type UpscaleNewParamsImageRequest struct {
 	paramObj
 }
 
-// IsPresent returns true if the field's value is not omitted and not the JSON
-// "null". To check if this field is omitted, use [param.IsOmitted].
-func (f UpscaleNewParamsImageRequest) IsPresent() bool { return !param.IsOmitted(f) && !f.IsNull() }
 func (r UpscaleNewParamsImageRequest) MarshalJSON() (data []byte, err error) {
 	type shadow UpscaleNewParamsImageRequest
 	return param.MarshalObject(r, (*shadow)(&r))
