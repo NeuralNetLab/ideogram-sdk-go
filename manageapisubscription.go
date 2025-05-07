@@ -94,6 +94,9 @@ func (r RechargeSettingsSubscriptionParam) MarshalJSON() (data []byte, err error
 	type shadow RechargeSettingsSubscriptionParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *RechargeSettingsSubscriptionParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 type ManageAPISubscriptionGetResponse struct {
 	// Whether or not the latest required terms have been accepted.
@@ -186,4 +189,7 @@ type ManageAPISubscriptionUpdateParams struct {
 func (r ManageAPISubscriptionUpdateParams) MarshalJSON() (data []byte, err error) {
 	type shadow ManageAPISubscriptionUpdateParams
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *ManageAPISubscriptionUpdateParams) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }

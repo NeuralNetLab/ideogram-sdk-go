@@ -111,6 +111,9 @@ func (r PriceParam) MarshalJSON() (data []byte, err error) {
 	type shadow PriceParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *PriceParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 // The current recharge settings for the API subscription.
 type RechargeSettingsResponse struct {
@@ -198,6 +201,9 @@ type ManageAPIAddCreditsParams struct {
 func (r ManageAPIAddCreditsParams) MarshalJSON() (data []byte, err error) {
 	type shadow ManageAPIAddCreditsParams
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *ManageAPIAddCreditsParams) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }
 
 type ManageAPIGetStripeSubscriptionParams struct {

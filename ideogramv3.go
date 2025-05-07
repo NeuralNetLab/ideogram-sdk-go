@@ -138,6 +138,9 @@ type ColorPaletteUnionParam struct {
 func (u ColorPaletteUnionParam) MarshalJSON() ([]byte, error) {
 	return param.MarshalUnion[ColorPaletteUnionParam](u.OfColorPaletteWithPresetName, u.OfColorPaletteWithMembers)
 }
+func (u *ColorPaletteUnionParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, u)
+}
 
 func (u *ColorPaletteUnionParam) asAny() any {
 	if !param.IsOmitted(u.OfColorPaletteWithPresetName) {
@@ -162,10 +165,13 @@ func (r ColorPaletteColorPaletteWithPresetNameParam) MarshalJSON() (data []byte,
 	type shadow ColorPaletteColorPaletteWithPresetNameParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *ColorPaletteColorPaletteWithPresetNameParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 func init() {
 	apijson.RegisterFieldValidator[ColorPaletteColorPaletteWithPresetNameParam](
-		"Name", false, "EMBER", "FRESH", "JUNGLE", "MAGIC", "MELON", "MOSAIC", "PASTEL", "ULTRAMARINE",
+		"name", "EMBER", "FRESH", "JUNGLE", "MAGIC", "MELON", "MOSAIC", "PASTEL", "ULTRAMARINE",
 	)
 }
 
@@ -186,6 +192,9 @@ func (r ColorPaletteColorPaletteWithMembersParam) MarshalJSON() (data []byte, er
 	type shadow ColorPaletteColorPaletteWithMembersParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *ColorPaletteColorPaletteWithMembersParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 // A member of a color palette.
 //
@@ -201,6 +210,9 @@ type ColorPaletteColorPaletteWithMembersMemberParam struct {
 func (r ColorPaletteColorPaletteWithMembersMemberParam) MarshalJSON() (data []byte, err error) {
 	type shadow ColorPaletteColorPaletteWithMembersMemberParam
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *ColorPaletteColorPaletteWithMembersMemberParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }
 
 // The response which contains information about the generated image, including the

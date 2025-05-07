@@ -95,3 +95,6 @@ func (r ManageAPITermAcceptParams) MarshalJSON() (data []byte, err error) {
 	type shadow ManageAPITermAcceptParams
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *ManageAPITermAcceptParams) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
