@@ -6,6 +6,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
@@ -121,6 +122,9 @@ func (r ImageRequestParam) MarshalJSON() (data []byte, err error) {
 	type shadow ImageRequestParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *ImageRequestParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 // (Cannot be used in conjunction with resolution) The aspect ratio to use for
 // image generation, which determines the image's resolution. Defaults to
@@ -160,4 +164,7 @@ type GenerateNewParams struct {
 func (r GenerateNewParams) MarshalJSON() (data []byte, err error) {
 	type shadow GenerateNewParams
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *GenerateNewParams) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }

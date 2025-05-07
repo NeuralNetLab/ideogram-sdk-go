@@ -10,6 +10,7 @@ import (
 	"net/http"
 
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/apiform"
+	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
 	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
 	"github.com/stainless-sdks/ideogram-sdk-go/option"
 	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
@@ -95,4 +96,7 @@ type UpscaleNewParamsImageRequest struct {
 func (r UpscaleNewParamsImageRequest) MarshalJSON() (data []byte, err error) {
 	type shadow UpscaleNewParamsImageRequest
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *UpscaleNewParamsImageRequest) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }

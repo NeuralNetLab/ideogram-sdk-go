@@ -62,6 +62,9 @@ func (r NestedObjectParam) MarshalJSON() (data []byte, err error) {
 	type shadow NestedObjectParam
 	return param.MarshalObject(r, (*shadow)(&r))
 }
+func (r *NestedObjectParam) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
+}
 
 type InternalTestingNewResponse struct {
 	ResponseContent string `json:"response_content"`
@@ -135,4 +138,7 @@ type InternalTestingNewParamsNestedObjectRequiredFields struct {
 func (r InternalTestingNewParamsNestedObjectRequiredFields) MarshalJSON() (data []byte, err error) {
 	type shadow InternalTestingNewParamsNestedObjectRequiredFields
 	return param.MarshalObject(r, (*shadow)(&r))
+}
+func (r *InternalTestingNewParamsNestedObjectRequiredFields) UnmarshalJSON(data []byte) error {
+	return apijson.UnmarshalRoot(data, r)
 }
