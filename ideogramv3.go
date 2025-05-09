@@ -92,6 +92,18 @@ func (r *IdeogramV3Service) Remix(ctx context.Context, body IdeogramV3RemixParam
 	return
 }
 
+// Replace the background of a given image synchronously using a prompt with
+// Ideogram 3.0. The foreground subject will be identified and kept, while the
+// background is replaced based on the prompt and chosen style. Supported image
+// formats include JPEG, PNG, and WebP. Images links are available for a limited
+// period of time; if you would like to keep the image, you must download it.
+func (r *IdeogramV3Service) ReplaceBackground(ctx context.Context, body IdeogramV3ReplaceBackgroundParams, opts ...option.RequestOption) (res *ImageGenerationResponse, err error) {
+	opts = append(r.Options[:], opts...)
+	path := "v1/ideogram-v3/replace-background"
+	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
+	return
+}
+
 // The aspect ratio to use for image generation, which determines the image's
 // resolution. Cannot be used in conjunction with resolution. Defaults to 1x1.
 type AspectRatio string
@@ -259,7 +271,7 @@ type ImageGenerationResponseData struct {
 	// "1280x768", "1280x800", "1312x736", "1344x640", "1344x704", "1344x768",
 	// "1408x576", "1408x640", "1408x704", "1472x576", "1472x640", "1472x704",
 	// "1536x512", "1536x576", "1536x640".
-	Resolution ResolutionV3 `json:"resolution,required"`
+	Resolution ResolutionIdeogram `json:"resolution,required"`
 	// Random seed. Set for reproducible generation.
 	Seed int64 `json:"seed,required"`
 	// The style type to generate with.
@@ -298,78 +310,78 @@ const (
 )
 
 // The resolutions supported for Ideogram 3.0.
-type ResolutionV3 string
+type ResolutionIdeogram string
 
 const (
-	ResolutionV3512x1536  ResolutionV3 = "512x1536"
-	ResolutionV3576x1408  ResolutionV3 = "576x1408"
-	ResolutionV3576x1472  ResolutionV3 = "576x1472"
-	ResolutionV3576x1536  ResolutionV3 = "576x1536"
-	ResolutionV3640x1344  ResolutionV3 = "640x1344"
-	ResolutionV3640x1408  ResolutionV3 = "640x1408"
-	ResolutionV3640x1472  ResolutionV3 = "640x1472"
-	ResolutionV3640x1536  ResolutionV3 = "640x1536"
-	ResolutionV3704x1152  ResolutionV3 = "704x1152"
-	ResolutionV3704x1216  ResolutionV3 = "704x1216"
-	ResolutionV3704x1280  ResolutionV3 = "704x1280"
-	ResolutionV3704x1344  ResolutionV3 = "704x1344"
-	ResolutionV3704x1408  ResolutionV3 = "704x1408"
-	ResolutionV3704x1472  ResolutionV3 = "704x1472"
-	ResolutionV3736x1312  ResolutionV3 = "736x1312"
-	ResolutionV3768x1088  ResolutionV3 = "768x1088"
-	ResolutionV3768x1216  ResolutionV3 = "768x1216"
-	ResolutionV3768x1280  ResolutionV3 = "768x1280"
-	ResolutionV3768x1344  ResolutionV3 = "768x1344"
-	ResolutionV3800x1280  ResolutionV3 = "800x1280"
-	ResolutionV3832x960   ResolutionV3 = "832x960"
-	ResolutionV3832x1024  ResolutionV3 = "832x1024"
-	ResolutionV3832x1088  ResolutionV3 = "832x1088"
-	ResolutionV3832x1152  ResolutionV3 = "832x1152"
-	ResolutionV3832x1216  ResolutionV3 = "832x1216"
-	ResolutionV3832x1248  ResolutionV3 = "832x1248"
-	ResolutionV3864x1152  ResolutionV3 = "864x1152"
-	ResolutionV3896x960   ResolutionV3 = "896x960"
-	ResolutionV3896x1024  ResolutionV3 = "896x1024"
-	ResolutionV3896x1088  ResolutionV3 = "896x1088"
-	ResolutionV3896x1120  ResolutionV3 = "896x1120"
-	ResolutionV3896x1152  ResolutionV3 = "896x1152"
-	ResolutionV3960x832   ResolutionV3 = "960x832"
-	ResolutionV3960x896   ResolutionV3 = "960x896"
-	ResolutionV3960x1024  ResolutionV3 = "960x1024"
-	ResolutionV3960x1088  ResolutionV3 = "960x1088"
-	ResolutionV31024x832  ResolutionV3 = "1024x832"
-	ResolutionV31024x896  ResolutionV3 = "1024x896"
-	ResolutionV31024x960  ResolutionV3 = "1024x960"
-	ResolutionV31024x1024 ResolutionV3 = "1024x1024"
-	ResolutionV31088x768  ResolutionV3 = "1088x768"
-	ResolutionV31088x832  ResolutionV3 = "1088x832"
-	ResolutionV31088x896  ResolutionV3 = "1088x896"
-	ResolutionV31088x960  ResolutionV3 = "1088x960"
-	ResolutionV31120x896  ResolutionV3 = "1120x896"
-	ResolutionV31152x704  ResolutionV3 = "1152x704"
-	ResolutionV31152x832  ResolutionV3 = "1152x832"
-	ResolutionV31152x864  ResolutionV3 = "1152x864"
-	ResolutionV31152x896  ResolutionV3 = "1152x896"
-	ResolutionV31216x704  ResolutionV3 = "1216x704"
-	ResolutionV31216x768  ResolutionV3 = "1216x768"
-	ResolutionV31216x832  ResolutionV3 = "1216x832"
-	ResolutionV31248x832  ResolutionV3 = "1248x832"
-	ResolutionV31280x704  ResolutionV3 = "1280x704"
-	ResolutionV31280x768  ResolutionV3 = "1280x768"
-	ResolutionV31280x800  ResolutionV3 = "1280x800"
-	ResolutionV31312x736  ResolutionV3 = "1312x736"
-	ResolutionV31344x640  ResolutionV3 = "1344x640"
-	ResolutionV31344x704  ResolutionV3 = "1344x704"
-	ResolutionV31344x768  ResolutionV3 = "1344x768"
-	ResolutionV31408x576  ResolutionV3 = "1408x576"
-	ResolutionV31408x640  ResolutionV3 = "1408x640"
-	ResolutionV31408x704  ResolutionV3 = "1408x704"
-	ResolutionV31472x576  ResolutionV3 = "1472x576"
-	ResolutionV31472x640  ResolutionV3 = "1472x640"
-	ResolutionV31472x704  ResolutionV3 = "1472x704"
-	ResolutionV31536x512  ResolutionV3 = "1536x512"
-	ResolutionV31536x576  ResolutionV3 = "1536x576"
-	ResolutionV31536x640  ResolutionV3 = "1536x640"
+	ResolutionIdeogram512x1536  ResolutionIdeogram = "512x1536"
+	ResolutionIdeogram576x1408  ResolutionIdeogram = "576x1408"
+	ResolutionIdeogram576x1472  ResolutionIdeogram = "576x1472"
+	ResolutionIdeogram576x1536  ResolutionIdeogram = "576x1536"
+	ResolutionIdeogram640x1344  ResolutionIdeogram = "640x1344"
+	ResolutionIdeogram640x1408  ResolutionIdeogram = "640x1408"
+	ResolutionIdeogram640x1472  ResolutionIdeogram = "640x1472"
+	ResolutionIdeogram640x1536  ResolutionIdeogram = "640x1536"
+	ResolutionIdeogram704x1152  ResolutionIdeogram = "704x1152"
+	ResolutionIdeogram704x1216  ResolutionIdeogram = "704x1216"
+	ResolutionIdeogram704x1280  ResolutionIdeogram = "704x1280"
+	ResolutionIdeogram704x1344  ResolutionIdeogram = "704x1344"
+	ResolutionIdeogram704x1408  ResolutionIdeogram = "704x1408"
+	ResolutionIdeogram704x1472  ResolutionIdeogram = "704x1472"
+	ResolutionIdeogram736x1312  ResolutionIdeogram = "736x1312"
+	ResolutionIdeogram768x1088  ResolutionIdeogram = "768x1088"
+	ResolutionIdeogram768x1216  ResolutionIdeogram = "768x1216"
+	ResolutionIdeogram768x1280  ResolutionIdeogram = "768x1280"
+	ResolutionIdeogram768x1344  ResolutionIdeogram = "768x1344"
+	ResolutionIdeogram800x1280  ResolutionIdeogram = "800x1280"
+	ResolutionIdeogram832x960   ResolutionIdeogram = "832x960"
+	ResolutionIdeogram832x1024  ResolutionIdeogram = "832x1024"
+	ResolutionIdeogram832x1088  ResolutionIdeogram = "832x1088"
+	ResolutionIdeogram832x1152  ResolutionIdeogram = "832x1152"
+	ResolutionIdeogram832x1216  ResolutionIdeogram = "832x1216"
+	ResolutionIdeogram832x1248  ResolutionIdeogram = "832x1248"
+	ResolutionIdeogram864x1152  ResolutionIdeogram = "864x1152"
+	ResolutionIdeogram896x960   ResolutionIdeogram = "896x960"
+	ResolutionIdeogram896x1024  ResolutionIdeogram = "896x1024"
+	ResolutionIdeogram896x1088  ResolutionIdeogram = "896x1088"
+	ResolutionIdeogram896x1120  ResolutionIdeogram = "896x1120"
+	ResolutionIdeogram896x1152  ResolutionIdeogram = "896x1152"
+	ResolutionIdeogram960x832   ResolutionIdeogram = "960x832"
+	ResolutionIdeogram960x896   ResolutionIdeogram = "960x896"
+	ResolutionIdeogram960x1024  ResolutionIdeogram = "960x1024"
+	ResolutionIdeogram960x1088  ResolutionIdeogram = "960x1088"
+	ResolutionIdeogram1024x832  ResolutionIdeogram = "1024x832"
+	ResolutionIdeogram1024x896  ResolutionIdeogram = "1024x896"
+	ResolutionIdeogram1024x960  ResolutionIdeogram = "1024x960"
+	ResolutionIdeogram1024x1024 ResolutionIdeogram = "1024x1024"
+	ResolutionIdeogram1088x768  ResolutionIdeogram = "1088x768"
+	ResolutionIdeogram1088x832  ResolutionIdeogram = "1088x832"
+	ResolutionIdeogram1088x896  ResolutionIdeogram = "1088x896"
+	ResolutionIdeogram1088x960  ResolutionIdeogram = "1088x960"
+	ResolutionIdeogram1120x896  ResolutionIdeogram = "1120x896"
+	ResolutionIdeogram1152x704  ResolutionIdeogram = "1152x704"
+	ResolutionIdeogram1152x832  ResolutionIdeogram = "1152x832"
+	ResolutionIdeogram1152x864  ResolutionIdeogram = "1152x864"
+	ResolutionIdeogram1152x896  ResolutionIdeogram = "1152x896"
+	ResolutionIdeogram1216x704  ResolutionIdeogram = "1216x704"
+	ResolutionIdeogram1216x768  ResolutionIdeogram = "1216x768"
+	ResolutionIdeogram1216x832  ResolutionIdeogram = "1216x832"
+	ResolutionIdeogram1248x832  ResolutionIdeogram = "1248x832"
+	ResolutionIdeogram1280x704  ResolutionIdeogram = "1280x704"
+	ResolutionIdeogram1280x768  ResolutionIdeogram = "1280x768"
+	ResolutionIdeogram1280x800  ResolutionIdeogram = "1280x800"
+	ResolutionIdeogram1312x736  ResolutionIdeogram = "1312x736"
+	ResolutionIdeogram1344x640  ResolutionIdeogram = "1344x640"
+	ResolutionIdeogram1344x704  ResolutionIdeogram = "1344x704"
+	ResolutionIdeogram1344x768  ResolutionIdeogram = "1344x768"
+	ResolutionIdeogram1408x576  ResolutionIdeogram = "1408x576"
+	ResolutionIdeogram1408x640  ResolutionIdeogram = "1408x640"
+	ResolutionIdeogram1408x704  ResolutionIdeogram = "1408x704"
+	ResolutionIdeogram1472x576  ResolutionIdeogram = "1472x576"
+	ResolutionIdeogram1472x640  ResolutionIdeogram = "1472x640"
+	ResolutionIdeogram1472x704  ResolutionIdeogram = "1472x704"
+	ResolutionIdeogram1536x512  ResolutionIdeogram = "1536x512"
+	ResolutionIdeogram1536x576  ResolutionIdeogram = "1536x576"
+	ResolutionIdeogram1536x640  ResolutionIdeogram = "1536x640"
 )
 
 // The style type to generate with.
@@ -475,7 +487,7 @@ type IdeogramV3GenerateParams struct {
 	// "1280x768", "1280x800", "1312x736", "1344x640", "1344x704", "1344x768",
 	// "1408x576", "1408x640", "1408x704", "1472x576", "1472x640", "1472x704",
 	// "1536x512", "1536x576", "1536x640".
-	Resolution ResolutionV3 `json:"resolution,omitzero"`
+	Resolution ResolutionIdeogram `json:"resolution,omitzero"`
 	// A list of 8 character hexadecimal codes representing the style of the image.
 	// Cannot be used in conjunction with style_reference_images or style_type.
 	StyleCodes []string `json:"style_codes,omitzero"`
@@ -522,7 +534,7 @@ type IdeogramV3ReframeParams struct {
 	// "1280x768", "1280x800", "1312x736", "1344x640", "1344x704", "1344x768",
 	// "1408x576", "1408x640", "1408x704", "1472x576", "1472x640", "1472x704",
 	// "1536x512", "1536x576", "1536x640".
-	Resolution ResolutionV3 `json:"resolution,omitzero,required"`
+	Resolution ResolutionIdeogram `json:"resolution,omitzero,required"`
 	// The number of images to generate.
 	NumImages param.Opt[int64] `json:"num_images,omitzero"`
 	// Random seed. Set for reproducible generation.
@@ -605,7 +617,7 @@ type IdeogramV3RemixParams struct {
 	// "1280x768", "1280x800", "1312x736", "1344x640", "1344x704", "1344x768",
 	// "1408x576", "1408x640", "1408x704", "1472x576", "1472x640", "1472x704",
 	// "1536x512", "1536x576", "1536x640".
-	Resolution ResolutionV3 `json:"resolution,omitzero"`
+	Resolution ResolutionIdeogram `json:"resolution,omitzero"`
 	// A list of 8 character hexadecimal codes representing the style of the image.
 	// Cannot be used in conjunction with style_reference_images or style_type.
 	StyleCodes []string `json:"style_codes,omitzero"`
@@ -620,6 +632,52 @@ type IdeogramV3RemixParams struct {
 }
 
 func (r IdeogramV3RemixParams) MarshalMultipart() (data []byte, contentType string, err error) {
+	buf := bytes.NewBuffer(nil)
+	writer := multipart.NewWriter(buf)
+	err = apiform.MarshalRoot(r, writer)
+	if err != nil {
+		writer.Close()
+		return nil, "", err
+	}
+	err = writer.Close()
+	if err != nil {
+		return nil, "", err
+	}
+	return buf.Bytes(), writer.FormDataContentType(), nil
+}
+
+type IdeogramV3ReplaceBackgroundParams struct {
+	// The image whose background is being replaced (max size 10MB); only JPEG, WebP
+	// and PNG formats are supported at this time.
+	Image io.Reader `json:"image,omitzero,required" format:"binary"`
+	// The prompt describing the desired new background.
+	Prompt string `json:"prompt,required"`
+	// The number of images to generate.
+	NumImages param.Opt[int64] `json:"num_images,omitzero"`
+	// Random seed. Set for reproducible generation.
+	Seed param.Opt[int64] `json:"seed,omitzero"`
+	// A color palette for generation, must EITHER be specified via one of the presets
+	// (name) or explicitly via hexadecimal representations of the color with optional
+	// weights (members). Not supported by V_1, V_1_TURBO, V_2A and V_2A_TURBO models.
+	ColorPalette ColorPaletteUnionParam `json:"color_palette,omitzero"`
+	// Determine if MagicPrompt should be used in generating the request or not.
+	//
+	// Any of "AUTO", "ON", "OFF".
+	MagicPrompt MagicPromptOption `json:"magic_prompt,omitzero"`
+	// The rendering speed to use.
+	//
+	// Any of "TURBO", "BALANCED", "DEFAULT", "QUALITY".
+	RenderingSpeed RenderingSpeed `json:"rendering_speed,omitzero"`
+	// A list of 8 character hexadecimal codes representing the style of the image.
+	// Cannot be used in conjunction with style_reference_images or style_type.
+	StyleCodes []string `json:"style_codes,omitzero"`
+	// A set of images to use as style references (maximum total size 10MB across all
+	// style references). The images should be in JPEG, PNG or WebP format.
+	StyleReferenceImages []io.Reader `json:"style_reference_images,omitzero" format:"binary"`
+	paramObj
+}
+
+func (r IdeogramV3ReplaceBackgroundParams) MarshalMultipart() (data []byte, contentType string, err error) {
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)

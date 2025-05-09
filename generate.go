@@ -109,7 +109,7 @@ type ImageRequestParam struct {
 	// "RESOLUTION_1408_576", "RESOLUTION_1408_640", "RESOLUTION_1408_704",
 	// "RESOLUTION_1472_576", "RESOLUTION_1472_640", "RESOLUTION_1472_704",
 	// "RESOLUTION_1536_512", "RESOLUTION_1536_576", "RESOLUTION_1536_640".
-	Resolution ImageGenerationResolution `json:"resolution,omitzero"`
+	Resolution ResolutionImageGeneration `json:"resolution,omitzero"`
 	// The style type to generate with; this is only applicable for models V_2 and
 	// above and should not be specified for model versions V_1.
 	//

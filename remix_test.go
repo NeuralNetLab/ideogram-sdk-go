@@ -45,7 +45,7 @@ func TestRemixNewWithOptionalParams(t *testing.T) {
 				Model:              ideogramsdk.ModelEnumV2,
 				NegativePrompt:     ideogramsdk.String("brush strokes, painting"),
 				NumImages:          ideogramsdk.Int(1),
-				Resolution:         ideogramsdk.ImageGenerationResolutionResolution1024_1024,
+				Resolution:         ideogramsdk.ResolutionImageGenerationResolution1024_1024,
 				Seed:               ideogramsdk.Int(12345),
 				StyleType:          ideogramsdk.StyleTypeV2AndAboveRealistic,
 			},

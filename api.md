@@ -117,7 +117,7 @@ Methods:
 
 Params Types:
 
-- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResolution">ImageGenerationResolution</a>
+- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ResolutionImageGeneration">ResolutionImageGeneration</a>
 
 Methods:
 
@@ -142,13 +142,13 @@ Params Types:
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#AspectRatio">AspectRatio</a>
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ColorPaletteUnionParam">ColorPaletteUnionParam</a>
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#RenderingSpeed">RenderingSpeed</a>
-- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ResolutionV3">ResolutionV3</a>
+- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ResolutionIdeogram">ResolutionIdeogram</a>
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#StyleTypeV3">StyleTypeV3</a>
 
 Response Types:
 
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResponse">ImageGenerationResponse</a>
-- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ResolutionV3">ResolutionV3</a>
+- <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ResolutionIdeogram">ResolutionIdeogram</a>
 - <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#StyleTypeV3">StyleTypeV3</a>
 
 Methods:
@@ -157,3 +157,4 @@ Methods:
 - <code title="post /v1/ideogram-v3/generate">client.IdeogramV3.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3Service.Generate">Generate</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, body <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3GenerateParams">IdeogramV3GenerateParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResponse">ImageGenerationResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 - <code title="post /v1/ideogram-v3/reframe">client.IdeogramV3.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3Service.Reframe">Reframe</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, body <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3ReframeParams">IdeogramV3ReframeParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResponse">ImageGenerationResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
 - <code title="post /v1/ideogram-v3/remix">client.IdeogramV3.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3Service.Remix">Remix</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, body <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3RemixParams">IdeogramV3RemixParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResponse">ImageGenerationResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
+- <code title="post /v1/ideogram-v3/replace-background">client.IdeogramV3.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3Service.ReplaceBackground">ReplaceBackground</a>(ctx <a href="https://pkg.go.dev/context">context</a>.<a href="https://pkg.go.dev/context#Context">Context</a>, body <a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#IdeogramV3ReplaceBackgroundParams">IdeogramV3ReplaceBackgroundParams</a>) (<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go">ideogramsdk</a>.<a href="https://pkg.go.dev/github.com/stainless-sdks/ideogram-sdk-go#ImageGenerationResponse">ImageGenerationResponse</a>, <a href="https://pkg.go.dev/builtin#error">error</a>)</code>
