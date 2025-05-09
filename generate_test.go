@@ -45,7 +45,6 @@ func TestGenerateNewWithOptionalParams(t *testing.T) {
 			Seed:               ideogramsdk.Int(12345),
 			StyleType:          ideogramsdk.StyleTypeV2AndAboveRealistic,
 		},
-		StyleRefEmbeddings: []string{"style_ref_embeddings", "style_ref_embeddings"},
 	})
 	if err != nil {
 		var apierr *ideogramsdk.Error

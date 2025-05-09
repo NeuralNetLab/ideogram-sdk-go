@@ -245,7 +245,7 @@ type ImageGenerationResponseData struct {
 	// The prompt used for the generation. This may be different from the original
 	// prompt.
 	Prompt string `json:"prompt,required"`
-	// The resolutions supported for model version V_3.
+	// The resolutions supported for Ideogram 3.0.
 	//
 	// Any of "512x1536", "576x1408", "576x1472", "576x1536", "640x1344", "640x1408",
 	// "640x1472", "640x1536", "704x1152", "704x1216", "704x1280", "704x1344",
@@ -293,10 +293,11 @@ type RenderingSpeed string
 const (
 	RenderingSpeedTurbo    RenderingSpeed = "TURBO"
 	RenderingSpeedBalanced RenderingSpeed = "BALANCED"
+	RenderingSpeedDefault  RenderingSpeed = "DEFAULT"
 	RenderingSpeedQuality  RenderingSpeed = "QUALITY"
 )
 
-// The resolutions supported for model version V_3.
+// The resolutions supported for Ideogram 3.0.
 type ResolutionV3 string
 
 const (
@@ -406,7 +407,7 @@ type IdeogramV3EditParams struct {
 	MagicPrompt MagicPromptOption `json:"magic_prompt,omitzero"`
 	// The rendering speed to use.
 	//
-	// Any of "TURBO", "BALANCED", "QUALITY".
+	// Any of "TURBO", "BALANCED", "DEFAULT", "QUALITY".
 	RenderingSpeed RenderingSpeed `json:"rendering_speed,omitzero"`
 	// A list of 8 character hexadecimal codes representing the style of the image.
 	// Cannot be used in conjunction with style_reference_images or style_type.
@@ -458,9 +459,9 @@ type IdeogramV3GenerateParams struct {
 	MagicPrompt MagicPromptOption `json:"magic_prompt,omitzero"`
 	// The rendering speed to use.
 	//
-	// Any of "TURBO", "BALANCED", "QUALITY".
+	// Any of "TURBO", "BALANCED", "DEFAULT", "QUALITY".
 	RenderingSpeed RenderingSpeed `json:"rendering_speed,omitzero"`
-	// The resolutions supported for model version V_3.
+	// The resolutions supported for Ideogram 3.0.
 	//
 	// Any of "512x1536", "576x1408", "576x1472", "576x1536", "640x1344", "640x1408",
 	// "640x1472", "640x1536", "704x1152", "704x1216", "704x1280", "704x1344",
@@ -507,7 +508,7 @@ type IdeogramV3ReframeParams struct {
 	// The image being reframed (max size 10MB); only JPEG, WebP and PNG formats are
 	// supported at this time.
 	Image io.Reader `json:"image,omitzero,required" format:"binary"`
-	// The resolutions supported for model version V_3.
+	// The resolutions supported for Ideogram 3.0.
 	//
 	// Any of "512x1536", "576x1408", "576x1472", "576x1536", "640x1344", "640x1408",
 	// "640x1472", "640x1536", "704x1152", "704x1216", "704x1280", "704x1344",
@@ -532,7 +533,7 @@ type IdeogramV3ReframeParams struct {
 	ColorPalette ColorPaletteUnionParam `json:"color_palette,omitzero"`
 	// The rendering speed to use.
 	//
-	// Any of "TURBO", "BALANCED", "QUALITY".
+	// Any of "TURBO", "BALANCED", "DEFAULT", "QUALITY".
 	RenderingSpeed RenderingSpeed `json:"rendering_speed,omitzero"`
 	// A list of 8 character hexadecimal codes representing the style of the image.
 	// Cannot be used in conjunction with style_reference_images or style_type.
@@ -588,9 +589,9 @@ type IdeogramV3RemixParams struct {
 	MagicPrompt MagicPromptOption `json:"magic_prompt,omitzero"`
 	// The rendering speed to use.
 	//
-	// Any of "TURBO", "BALANCED", "QUALITY".
+	// Any of "TURBO", "BALANCED", "DEFAULT", "QUALITY".
 	RenderingSpeed RenderingSpeed `json:"rendering_speed,omitzero"`
-	// The resolutions supported for model version V_3.
+	// The resolutions supported for Ideogram 3.0.
 	//
 	// Any of "512x1536", "576x1408", "576x1472", "576x1536", "640x1344", "640x1408",
 	// "640x1472", "640x1536", "704x1152", "704x1216", "704x1280", "704x1344",

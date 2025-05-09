@@ -145,12 +145,18 @@ type ManageAPISubscriptionGetResponseMetronomeLinks struct {
 	InvoicesIframeDarkModeURL string `json:"invoices_iframe_dark_mode_url"`
 	// The URL to display the customer invoice and API usage.
 	InvoicesIframeURL string `json:"invoices_iframe_url"`
+	// The URL to display the customer usage dashboard, in dark mode.
+	UsageIframeDarkModeURL string `json:"usage_iframe_dark_mode_url"`
+	// The URL to display the customer usage dashboard.
+	UsageIframeURL string `json:"usage_iframe_url"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CreditsIframeDarkModeURL  respjson.Field
 		CreditsIframeURL          respjson.Field
 		InvoicesIframeDarkModeURL respjson.Field
 		InvoicesIframeURL         respjson.Field
+		UsageIframeDarkModeURL    respjson.Field
+		UsageIframeURL            respjson.Field
 		ExtraFields               map[string]respjson.Field
 		raw                       string
 	} `json:"-"`
