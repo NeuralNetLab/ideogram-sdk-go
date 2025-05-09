@@ -1,4 +1,4 @@
-configured_endpoints: 21
+configured_endpoints: 22
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/creativeunicorns%2Fideogram-sdk-cd172932c162f00ca1f62a84f684a0eab8cb83d9ccfccbcbaa40c6cb56219c8f.yml
 openapi_spec_hash: a68d61a564d8745683480e55cd1276f0
-config_hash: 90255df3c1e479091974e2d982d06958
+config_hash: 87835d19949a9558fcbeaa384edb77eb

@@ -32,7 +32,7 @@ func TestReframeNewWithOptionalParams(t *testing.T) {
 	_, err := client.Reframe.New(context.TODO(), ideogramsdk.ReframeNewParams{
 		ImageFile:  io.Reader(bytes.NewBuffer([]byte("some file contents"))),
 		Model:      ideogramsdk.ModelEnumV2Turbo,
-		Resolution: ideogramsdk.ImageGenerationResolutionResolution1024_1024,
+		Resolution: ideogramsdk.ResolutionImageGenerationResolution1024_1024,
 		NumImages:  ideogramsdk.Int(1),
 		Seed:       ideogramsdk.Int(12345),
 		StyleType:  ideogramsdk.StyleTypeV2AndAboveRealistic,
