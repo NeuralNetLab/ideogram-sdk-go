@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

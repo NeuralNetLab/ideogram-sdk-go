@@ -6,11 +6,11 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/apijson"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/requestconfig"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/respjson"
 )
 
 // ManageAPISubscriptionService contains methods and other services that help with

@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/requestconfig"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
 )
 
 // Client creates a struct with services and top level methods that help with

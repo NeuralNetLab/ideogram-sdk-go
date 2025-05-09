@@ -3,8 +3,8 @@ package apijson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/apijson"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/apijson"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
 	"reflect"
 	"testing"
 )

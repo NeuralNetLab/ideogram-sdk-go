@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
 )
 
 var encoders sync.Map // map[reflect.Type]encoderFunc

@@ -3,7 +3,7 @@ package param
 import (
 	"encoding/json"
 	"fmt"
-	shimjson "github.com/stainless-sdks/ideogram-sdk-go/internal/encoding/json"
+	shimjson "github.com/NeuralNetLab/ideogram-sdk-go/internal/encoding/json"
 	"time"
 )
 

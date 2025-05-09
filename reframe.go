@@ -9,10 +9,10 @@ import (
 	"mime/multipart"
 	"net/http"
 
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/apiform"
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/requestconfig"
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/apiform"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/requestconfig"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
 )
 
 // ReframeService contains methods and other services that help with interacting

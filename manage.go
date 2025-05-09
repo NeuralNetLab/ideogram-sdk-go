@@ -3,7 +3,7 @@
 package ideogramsdk
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
 )
 
 // ManageService contains methods and other services that help with interacting
