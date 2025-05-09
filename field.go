@@ -1,7 +1,7 @@
 package ideogramsdk
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
 	"io"
 	"time"
 )

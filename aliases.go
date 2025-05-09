@@ -3,8 +3,8 @@
 package ideogramsdk
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/apierror"
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/param"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/apierror"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/param"
 )
 
 // aliased to make [param.APIUnion] private when embedding

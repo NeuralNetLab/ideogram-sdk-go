@@ -2,7 +2,7 @@
 package json
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/encoding/json/shims"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/encoding/json/shims"
 	"reflect"
 	"time"
 )

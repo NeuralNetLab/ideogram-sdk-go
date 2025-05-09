@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/ideogram-sdk-go
+module github.com/NeuralNetLab/ideogram-sdk-go
 
 go 1.21
 

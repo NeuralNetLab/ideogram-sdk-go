@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/ideogram-sdk-go/packages/respjson"
+	"github.com/NeuralNetLab/ideogram-sdk-go/packages/respjson"
 	"reflect"
 )
 
