@@ -113,7 +113,7 @@ type ImageRequestParam struct {
 	// The style type to generate with; this is only applicable for models V_2 and
 	// above and should not be specified for model versions V_1.
 	//
-	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME".
+	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME", "CUSTOM".
 	StyleType StyleTypeV2AndAbove `json:"style_type,omitzero"`
 	paramObj
 }
@@ -156,8 +156,6 @@ const (
 
 type GenerateNewParams struct {
 	ImageRequest ImageRequestParam `json:"image_request,omitzero,required"`
-	// A list of base64 encoded binary embeddings.
-	StyleRefEmbeddings []string `json:"style_ref_embeddings,omitzero"`
 	paramObj
 }
 

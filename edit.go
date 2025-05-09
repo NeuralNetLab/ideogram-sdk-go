@@ -89,7 +89,7 @@ type GenerateImageData struct {
 	// The style type to generate with; this is only applicable for models V_2 and
 	// above and should not be specified for model versions V_1.
 	//
-	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME".
+	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME", "CUSTOM".
 	StyleType StyleTypeV2AndAbove `json:"style_type"`
 	// The direct link to the image generated.
 	URL string `json:"url,nullable" format:"uri"`
@@ -146,6 +146,7 @@ const (
 	StyleTypeV2AndAboveDesign    StyleTypeV2AndAbove = "DESIGN"
 	StyleTypeV2AndAboveRender3D  StyleTypeV2AndAbove = "RENDER_3D"
 	StyleTypeV2AndAboveAnime     StyleTypeV2AndAbove = "ANIME"
+	StyleTypeV2AndAboveCustom    StyleTypeV2AndAbove = "CUSTOM"
 )
 
 type EditApplyParams struct {
@@ -175,7 +176,7 @@ type EditApplyParams struct {
 	// The style type to generate with; this is only applicable for models V_2 and
 	// above and should not be specified for model versions V_1.
 	//
-	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME".
+	// Any of "AUTO", "GENERAL", "REALISTIC", "DESIGN", "RENDER_3D", "ANIME", "CUSTOM".
 	StyleType StyleTypeV2AndAbove `json:"style_type,omitzero"`
 	paramObj
 }
