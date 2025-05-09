@@ -10,9 +10,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stainless-sdks/ideogram-sdk-go"
-	"github.com/stainless-sdks/ideogram-sdk-go/internal/testutil"
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal/testutil"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
 )
 
 func TestUpscaleNewWithOptionalParams(t *testing.T) {

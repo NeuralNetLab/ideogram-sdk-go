@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/ideogram-sdk-go"
-	"github.com/stainless-sdks/ideogram-sdk-go/internal"
-	"github.com/stainless-sdks/ideogram-sdk-go/option"
+	"github.com/NeuralNetLab/ideogram-sdk-go"
+	"github.com/NeuralNetLab/ideogram-sdk-go/internal"
+	"github.com/NeuralNetLab/ideogram-sdk-go/option"
 )
 
 type closureTransport struct {
