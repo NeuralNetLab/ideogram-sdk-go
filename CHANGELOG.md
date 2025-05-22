@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-05-22)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/NeuralNetLab/ideogram-sdk-go/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs in python ([8a9e40c](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/8a9e40c2aa0454214a28d9534370fba35d086f26))
+
+
+### Bug Fixes
+
+* **client:** correctly set stream key for multipart ([c92d800](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/c92d800e7bba4191ff11837186578affbf4df88b))
+* **client:** don't panic on marshal with extra null field ([a7b1b83](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/a7b1b83ab93a3b1901c69bbc39e49908b9f6e298))
+
+
+### Chores
+
+* **docs:** grammar improvements ([2cfd5f5](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/2cfd5f57722b60139d2a7663fc816b3765d7993e))
+* improve devcontainer setup ([592c8c5](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/592c8c5a37cc33bef1aaca90a1282b8720eaca4c))
+
 ## 0.1.0-alpha.1 (2025-05-09)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/NeuralNetLab/ideogram-sdk-go/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
