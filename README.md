@@ -24,7 +24,7 @@ Or to pin the version:
 <!-- x-release-please-start-version -->
 
 ```sh
-go get -u 'github.com/NeuralNetLab/ideogram-sdk-go@v0.1.0-alpha.1'
+go get -u 'github.com/NeuralNetLab/ideogram-sdk-go@v0.1.0-alpha.2'
 ```
 
 <!-- x-release-please-end -->
@@ -52,8 +52,7 @@ import (
 
 func main() {
 	client := ideogramsdk.NewClient(
-		option.WithAPIKey("My API Key"),           // defaults to os.LookupEnv("IDEOGRAM_SDK_API_KEY")
-		option.WithBearerToken("My Bearer Token"), // defaults to os.LookupEnv("IDEOGRAM_SDK_BEARER_TOKEN")
+		option.WithAPIKey("My API Key"), // defaults to os.LookupEnv("IDEOGRAM_SDK_API_KEY")
 	)
 	describe, err := client.Describe.New(context.TODO(), ideogramsdk.DescribeNewParams{
 		ImageFile: io.Reader(bytes.NewBuffer([]byte("some file contents"))),
