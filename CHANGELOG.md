@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-07-09)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/NeuralNetLab/ideogram-sdk-go/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **client:** add debug log helper ([d1d2857](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/d1d285714794fbcf14e63a255ee11b426578f3bf))
+* **client:** add escape hatch for null slice & maps ([89e3fb1](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/89e3fb13ebe879ab9a8aa6b048c8ae5e8bfe06a9))
+* **client:** add support for endpoint-specific base URLs in python ([8a9e40c](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/8a9e40c2aa0454214a28d9534370fba35d086f26))
+* **client:** allow overriding unions ([7444639](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/74446396a0b9a19f0849bfbfe1b21b9a96401b7b))
+
+
+### Bug Fixes
+
+* **client:** cast to raw message when converting to params ([b04a33b](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/b04a33b06b5d09472339b694c18430d022ccae1a))
+* **client:** correctly set stream key for multipart ([c92d800](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/c92d800e7bba4191ff11837186578affbf4df88b))
+* **client:** don't panic on marshal with extra null field ([a7b1b83](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/a7b1b83ab93a3b1901c69bbc39e49908b9f6e298))
+* don't try to deserialize as json when ResponseBodyInto is []byte ([d464ddc](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/d464ddc51a2136dffc49b4894e4aefe0cb75fb91))
+* fix error ([0e93679](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/0e93679303d1d0a06ff6506567fae60292536b64))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([7bb51f1](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/7bb51f103bee20d7b13ef3d04bce527001ac24b3))
+* **ci:** only run for pushes and fork pull requests ([8ab152a](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/8ab152a58c3932e6f63eec121e33abf8f6cd5e14))
+* **docs:** grammar improvements ([2cfd5f5](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/2cfd5f57722b60139d2a7663fc816b3765d7993e))
+* fix documentation of null map ([e400d5e](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/e400d5e24b3a2154ba5985bde9547a5b9e338032))
+* improve devcontainer setup ([592c8c5](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/592c8c5a37cc33bef1aaca90a1282b8720eaca4c))
+* **internal:** codegen related update ([8115308](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/8115308d2f141d463a619691692b56dcd9b80a44))
+* lint tests ([ea88937](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/ea88937e7487e5d3073f81ecc19f1829110dcdd7))
+* make go mod tidy continue on error ([3ff08b2](https://github.com/NeuralNetLab/ideogram-sdk-go/commit/3ff08b2a7c42ccc86eac2eefea3f3fd4748db736))
+
 ## 0.1.0-alpha.1 (2025-05-09)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/NeuralNetLab/ideogram-sdk-go/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

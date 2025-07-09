@@ -4,6 +4,7 @@ package ideogramsdk
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"net/url"
 
@@ -92,7 +93,7 @@ func (r *Price) UnmarshalJSON(data []byte) error {
 // be used at the last possible moment before sending a request. Test for this with
 // PriceParam.Overrides()
 func (r Price) ToParam() PriceParam {
-	return param.Override[PriceParam](r.RawJSON())
+	return param.Override[PriceParam](json.RawMessage(r.RawJSON()))
 }
 
 // Represents a price.

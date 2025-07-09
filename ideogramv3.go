@@ -148,7 +148,7 @@ type ColorPaletteUnionParam struct {
 }
 
 func (u ColorPaletteUnionParam) MarshalJSON() ([]byte, error) {
-	return param.MarshalUnion[ColorPaletteUnionParam](u.OfColorPaletteWithPresetName, u.OfColorPaletteWithMembers)
+	return param.MarshalUnion(u, u.OfColorPaletteWithPresetName, u.OfColorPaletteWithMembers)
 }
 func (u *ColorPaletteUnionParam) UnmarshalJSON(data []byte) error {
 	return apijson.UnmarshalRoot(data, u)
@@ -434,6 +434,9 @@ func (r IdeogramV3EditParams) MarshalMultipart() (data []byte, contentType strin
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)
+	if err == nil {
+		err = apiform.WriteExtras(writer, r.ExtraFields())
+	}
 	if err != nil {
 		writer.Close()
 		return nil, "", err
@@ -505,6 +508,9 @@ func (r IdeogramV3GenerateParams) MarshalMultipart() (data []byte, contentType s
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)
+	if err == nil {
+		err = apiform.WriteExtras(writer, r.ExtraFields())
+	}
 	if err != nil {
 		writer.Close()
 		return nil, "", err
@@ -560,6 +566,9 @@ func (r IdeogramV3ReframeParams) MarshalMultipart() (data []byte, contentType st
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)
+	if err == nil {
+		err = apiform.WriteExtras(writer, r.ExtraFields())
+	}
 	if err != nil {
 		writer.Close()
 		return nil, "", err
@@ -635,6 +644,9 @@ func (r IdeogramV3RemixParams) MarshalMultipart() (data []byte, contentType stri
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)
+	if err == nil {
+		err = apiform.WriteExtras(writer, r.ExtraFields())
+	}
 	if err != nil {
 		writer.Close()
 		return nil, "", err
@@ -681,6 +693,9 @@ func (r IdeogramV3ReplaceBackgroundParams) MarshalMultipart() (data []byte, cont
 	buf := bytes.NewBuffer(nil)
 	writer := multipart.NewWriter(buf)
 	err = apiform.MarshalRoot(r, writer)
+	if err == nil {
+		err = apiform.WriteExtras(writer, r.ExtraFields())
+	}
 	if err != nil {
 		writer.Close()
 		return nil, "", err

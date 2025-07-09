@@ -4,6 +4,7 @@ package ideogramsdk
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 
 	"github.com/NeuralNetLab/ideogram-sdk-go/internal/apijson"
@@ -76,7 +77,7 @@ func (r *RechargeSettingsSubscription) UnmarshalJSON(data []byte) error {
 // be used at the last possible moment before sending a request. Test for this with
 // RechargeSettingsSubscriptionParam.Overrides()
 func (r RechargeSettingsSubscription) ToParam() RechargeSettingsSubscriptionParam {
-	return param.Override[RechargeSettingsSubscriptionParam](r.RawJSON())
+	return param.Override[RechargeSettingsSubscriptionParam](json.RawMessage(r.RawJSON()))
 }
 
 // The current recharge settings for the API subscription.
